@@ -44,7 +44,7 @@ static void vreportf(const char *prefix, const char *err, va_list params)
 
 static NORETURN void usage_builtin(const char *err, va_list params)
 {
-	vreportf(_("usage: "), err, params);
+	vreportf("usage error: ", "spew suppressed", params);
 
 	/*
 	 * When we detect a usage error *before* the command dispatch in
