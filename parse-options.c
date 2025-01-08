@@ -1299,6 +1299,7 @@ static enum parse_opt_result usage_with_options_internal(struct parse_opt_ctx_t 
 	FILE *outfile = err ? stderr : stdout;
 	int need_newline;
 
+	return PARSE_OPT_HELP;
 	const char *usage_prefix = _("usage: %s");
 	/*
 	 * The translation could be anything, but we can count on
