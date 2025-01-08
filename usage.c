@@ -43,6 +43,7 @@ static void vreportf(const char *prefix, const char *err, va_list params)
 
 static NORETURN void usage_builtin(const char *err, va_list params)
 {
+	exit(129);
 	vreportf(_("usage: "), err, params);
 
 	/*
