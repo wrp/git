@@ -732,7 +732,7 @@ char *help_unknown_cmd(const char *cmd)
 
 	fprintf_ln(stderr, _("git: '%s' is not a git command. See 'git --help'."), cmd);
 
-	if (0 && SIMILAR_ENOUGH(best_similarity)) {
+	if (SIMILAR_ENOUGH(best_similarity)) {
 		fprintf_ln(stderr,
 			   Q_("\nThe most similar command is",
 			      "\nThe most similar commands are",
