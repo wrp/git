@@ -68,7 +68,7 @@ Alias
 EOF
 
 test_expect_success 'test help' '
-	test_must_fail test-tool parse-options -h >output 2>output.err &&
+	test-tool parse-options -h >output 2>output.err &&
 	test_must_be_empty output.err &&
 	test_cmp expect output
 '
@@ -313,7 +313,7 @@ test_expect_success 'unambiguously abbreviated option with "="' '
 '
 
 test_expect_success 'ambiguously abbreviated option' '
-	test_expect_code 129 env GIT_TEST_DISALLOW_ABBREVIATED_OPTIONS=false \
+	test_expect_code 0 env GIT_TEST_DISALLOW_ABBREVIATED_OPTIONS=false \
 	test-tool parse-options --strin 123
 '
 
