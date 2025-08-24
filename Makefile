@@ -3388,13 +3388,12 @@ style:
 
 .PHONY: check
 check:
-	@if sparse; \
+	@if sparse 2> /dev/null; \
 	then \
 		echo >&2 "Use 'make sparse' instead"; \
 		$(MAKE) --no-print-directory sparse; \
 	else \
-		echo >&2 "Did you mean 'make test'?"; \
-		exit 1; \
+		$(MAKE) test; \
 	fi
 
 COCCI_GEN_ALL = .build/contrib/coccinelle/ALL.cocci
