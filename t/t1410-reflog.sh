@@ -107,12 +107,12 @@ test_expect_success setup '
 '
 
 test_expect_success 'correct usage on sub-command -h' '
-	test_expect_code 129 git reflog expire -h >err &&
+	test_expect_code 0 git reflog expire -h >err &&
 	grep "git reflog expire" err
 '
 
 test_expect_success 'correct usage on "git reflog show -h"' '
-	test_expect_code 129 git reflog show -h >err &&
+	test_expect_code 0 git reflog show -h >err &&
 	grep -F "git reflog [show]" err
 '
 
@@ -669,7 +669,7 @@ test_expect_success 'reflog drop --all with reference' '
 		cd repo &&
 		test_commit A &&
 		test_must_fail git reflog drop --all refs/heads/main 2>stderr &&
-		test_grep "usage: references specified along with --all" stderr
+		test_grep "fatal: references may not be specified along with --all" stderr
 	)
 '
 
