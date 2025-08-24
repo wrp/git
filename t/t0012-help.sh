@@ -255,7 +255,7 @@ do
 		(
 			GIT_CEILING_DIRECTORIES=$(pwd) &&
 			export GIT_CEILING_DIRECTORIES &&
-			test_expect_code 129 git -C sub $builtin -h >output 2>err
+			test_expect_code 0 git -C sub $builtin -h >output 2>err
 		) &&
 		test_must_be_empty err &&
 		test_grep usage output

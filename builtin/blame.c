@@ -958,6 +958,7 @@ int cmd_blame(int argc,
 		case PARSE_OPT_UNKNOWN:
 			break;
 		case PARSE_OPT_HELP:
+			exit(0);
 		case PARSE_OPT_ERROR:
 		case PARSE_OPT_SUBCOMMAND:
 			exit(129);
