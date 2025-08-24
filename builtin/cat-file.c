@@ -1113,10 +1113,10 @@ int cmd_cat_file(int argc,
 	case LOFC_BLOB_LIMIT:
 	case LOFC_OBJECT_TYPE:
 		if (!batch.enabled)
-			usage(_("objects filter only supported in batch mode"));
+			die(_("objects filter only supported in batch mode"));
 		break;
 	default:
-		usagef(_("objects filter not supported: '%s'"),
+		die(_("objects filter not supported: '%s'"),
 		       list_object_filter_config_name(batch.objects_filter.choice));
 	}
 
