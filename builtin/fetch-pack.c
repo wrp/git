@@ -178,6 +178,7 @@ int cmd_fetch_pack(int argc,
 			list_objects_filter_set_no_filter(&args.filter_options);
 			continue;
 		}
+		die("Unknown argument: %s", arg);
 		usage(fetch_pack_usage);
 	}
 	if (deepen_not.nr)
