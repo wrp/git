@@ -445,6 +445,13 @@ int cmd_diff(int argc,
 
 	/* Were we asked to do --no-index explicitly? */
 	for (i = 1; i < argc; i++) {
+		if (!strcmp(argv[i], "-h")){
+			printf("usage: ");
+			fputs(builtin_diff_usage, stdout);
+			exit(0);
+		}
+
+
 		if (!strcmp(argv[i], "--")) {
 			i++;
 			break;
