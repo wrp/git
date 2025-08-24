@@ -1387,14 +1387,14 @@ do
 	test_expect_success "objects filter with unsupported option $option" '
 		case "$option" in
 		tree:1)
-			echo "usage: objects filter not supported: ${SQ}tree${SQ}" >expect
+			echo "fatal: objects filter not supported: ${SQ}tree${SQ}" >expect
 			;;
 		sparse:path=x)
 			echo "fatal: sparse:path filters support has been dropped" >expect
 			;;
 		*)
 			option_name=$(echo "$option" | cut -d= -f1) &&
-			printf "usage: objects filter not supported: ${SQ}%s${SQ}\n" "$option_name" >expect
+			printf "fatal: objects filter not supported: ${SQ}%s${SQ}\n" "$option_name" >expect
 			;;
 		esac &&
 		test_must_fail git -C repo cat-file --filter=$option 2>err &&
