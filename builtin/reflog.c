@@ -365,7 +365,7 @@ static int cmd_reflog_drop(int argc, const char **argv, const char *prefix,
 	argc = parse_options(argc, argv, prefix, options, reflog_drop_usage, 0);
 
 	if (argc && do_all)
-		usage(_("references specified along with --all"));
+		die("references may not be specified along with --all");
 
 	if (do_all) {
 		struct worktree_reflogs collected = {
