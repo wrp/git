@@ -1006,7 +1006,7 @@ enum parse_opt_result parse_options_step(struct parse_opt_ctx_t *ctx,
 					 */
 					return PARSE_OPT_DONE;
 				error(_("unknown subcommand: `%s'"), arg);
-				usage_with_options(usagestr, options);
+				exit(129);
 			case PARSE_OPT_COMPLETE:
 			case PARSE_OPT_HELP:
 			case PARSE_OPT_ERROR:
@@ -1181,7 +1181,7 @@ int parse_options(int argc, const char **argv,
 		if (ctx.has_subcommands &&
 		    !(flags & PARSE_OPT_SUBCOMMAND_OPTIONAL)) {
 			error(_("need a subcommand"));
-			usage_with_options(usagestr, options);
+			exit(129);
 		}
 		break;
 	case PARSE_OPT_UNKNOWN:
@@ -1193,7 +1193,7 @@ int parse_options(int argc, const char **argv,
 			error(_("unknown non-ascii option in string: `%s'"),
 			      ctx.argv[0]);
 		}
-		usage_with_options(usagestr, options);
+		exit(129);
 	}
 
 	precompose_argv_prefix(argc, argv, NULL);

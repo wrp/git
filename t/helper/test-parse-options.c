@@ -314,7 +314,7 @@ int cmd__parse_options_flags(int argc, const char **argv)
 
 	if (!argc || strcmp(argv[0], "cmd")) {
 		error("'cmd' is mandatory");
-		usage_with_options(usage, test_flag_options);
+		exit(129);
 	}
 
 	return parse_options_flags__cmd(argc, argv, test_flags);
@@ -374,7 +374,7 @@ int cmd__parse_subcommand(int argc, const char **argv)
 
 	if (!argc || strcmp(argv[0], "cmd")) {
 		error("'cmd' is mandatory");
-		usage_with_options(usage, test_flag_options);
+		exit(129);
 	}
 
 	return parse_subcommand__cmd(argc, argv, test_flags);
