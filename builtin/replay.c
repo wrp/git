@@ -107,7 +107,7 @@ int cmd_replay(int argc,
 
 	if (!opts.onto && !opts.advance) {
 		error(_("option --onto or --advance is mandatory"));
-		usage_with_options(replay_usage, replay_options);
+		exit(129);
 	}
 
 	die_for_incompatible_opt2(!!opts.advance, "--advance",
