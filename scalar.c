@@ -836,7 +836,7 @@ static int cmd_run(int argc, const char **argv)
 
 		if (i > 0 && !tasks[i].arg) {
 			error(_("no such task: '%s'"), argv[0]);
-			usage_with_options(usagestr, options);
+			exit(129);
 		}
 	}
 

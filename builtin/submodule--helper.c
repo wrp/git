@@ -1489,8 +1489,7 @@ static int module_deinit(int argc, const char **argv, const char *prefix,
 
 	if (all && argc) {
 		error("pathspec and --all are incompatible");
-		usage_with_options(git_submodule_helper_usage,
-				   module_deinit_options);
+		exit(129);
 	}
 
 	if (!argc && !all)

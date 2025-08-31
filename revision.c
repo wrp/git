@@ -2736,7 +2736,7 @@ void parse_revision_opt(struct rev_info *revs, struct parse_opt_ctx_t *ctx,
 				    &ctx->cpidx, ctx->out, NULL);
 	if (n <= 0) {
 		error("unknown option `%s'", ctx->argv[0]);
-		usage_with_options(usagestr, options);
+		exit(129);
 	}
 	ctx->argv += n;
 	ctx->argc -= n;

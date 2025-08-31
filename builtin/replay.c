@@ -327,7 +327,7 @@ int cmd_replay(int argc,
 
 	if (!onto_name && !advance_name_opt) {
 		error(_("option --onto or --advance is mandatory"));
-		usage_with_options(replay_usage, replay_options);
+		exit(129);
 	}
 
 	if (advance_name_opt && contained)

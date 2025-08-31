@@ -1172,7 +1172,7 @@ int cmd_update_index(int argc,
 				error("unknown option '%s'", ctx.argv[0] + 2);
 			else
 				error("unknown switch '%c'", *ctx.opt);
-			usage_with_options(update_index_usage, options);
+			exit(129);
 		}
 	}
 	argc = parse_options_end(&ctx);
