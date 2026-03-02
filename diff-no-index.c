@@ -374,8 +374,8 @@ int diff_no_index(struct rev_info *revs, const struct git_hash_algo *algop,
 			     diff_no_index_usage, 0);
 	if (argc < 2) {
 		if (implicit_no_index)
-			warning(_("Not a git repository. Use --no-index to "
-				  "compare two paths outside a working tree"));
+			die(_("Not a git repository. Use --no-index to "
+			      "compare two paths outside a working tree"));
 		usage_with_options(diff_no_index_usage, options);
 	}
 	for (i = 0; i < 2; i++) {
