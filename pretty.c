@@ -1649,16 +1649,18 @@ static size_t format_commit_one(struct strbuf *sb, /* in UTF-8 */
 			if (c->signature_check.output)
 				strbuf_addstr(sb, c->signature_check.output);
 			break;
-		case '?':
+		case '?': {
+			const char *color;
+			char ch;
 			switch (c->signature_check.result) {
 			case 'G':
 				switch (c->signature_check.trust_level) {
 				case TRUST_UNDEFINED:
 				case TRUST_NEVER:
-					strbuf_addch(sb, 'U');
+					ch = 'U';
 					break;
 				default:
-					strbuf_addch(sb, 'G');
+					ch = 'G';
 					break;
 				}
 				break;
@@ -1668,9 +1670,33 @@ static size_t format_commit_one(struct strbuf *sb, /* in UTF-8 */
 			case 'X':
 			case 'Y':
 			case 'R':
-				strbuf_addch(sb, c->signature_check.result);
+				ch = c->signature_check.result;
+				break;
+			default:
+				ch = 0;
+				break;
+			}
+			if (ch && want_color(c->auto_color)) {
+				switch (ch) {
+				case 'G':
+					color = GIT_COLOR_GREEN;
+					break;
+				case 'B':
+				case 'R':
+					color = GIT_COLOR_RED;
+					break;
+				default:
+					color = GIT_COLOR_YELLOW;
+					break;
+				}
+				strbuf_addstr(sb, color);
+				strbuf_addch(sb, ch);
+				strbuf_addstr(sb, GIT_COLOR_RESET);
+			} else if (ch) {
+				strbuf_addch(sb, ch);
 			}
 			break;
+		}
 		case 'S':
 			if (c->signature_check.signer)
 				strbuf_addstr(sb, c->signature_check.signer);
